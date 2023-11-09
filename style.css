@@ -5,11 +5,13 @@
 }
 
 body{
-    padding-top: 20vh;
     width: 80%;
     font-family: 'Roboto', sans-serif;
     margin: 0 auto;
 }
+
+
+main{margin: 18vh 0;}
 
 .s-con{
     display: grid;
@@ -28,44 +30,62 @@ body{
     border: 5px solid transparent;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s linear ;
     cursor: pointer;
-    filter: brightness(1.2);
+    filter: brightness(1.2) contrast(120%);
+    transition: transform 0.3s, filter 0.1s ;
 }
 .s h1{
     display: block;
       position: absolute;
+      z-index: 6;
       top: 50%;
       left: 50%;
       font-size: 1.1rem;
       transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(13, 13, 13, 0.79);
       color: hsl(0, 0%, 100%);
       padding: 10px;
       max-width: 60%;
 }
 
+.overlay {
+  visibility: hidden;
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: none;
+  background-color: rgb(0, 34, 64); 
+  transition: bottom 0.7s ease-in-out ;
+}
+
+.s:hover .overlay {
+  visibility: visible;
+  bottom: 0%;
+}
+
 .grid-item-link {
-    display: none; 
+    visibility: hidden;
     position: absolute;
+    width: 70%;
     bottom: 10px;
     left: 50%;
-    transform: translateX(0);
+    transform: translateX(-50%) translateY(200%);
     text-decoration: none; 
     color: #ffffff; 
-    background-color: #ff4242;
+    background-color: #0051ff;
     font-size: 0.8rem;
+    border-radius: 5px;
     padding: 5px 10px;
     opacity: 0;
-    transition: transform 1s;
+    transition: transform 0.8s ease-out;
+    z-index: 5;
   }
 
 
-
-
-
-
 .s:hover{
+    filter: brightness(1.2) grayscale(0%) contrast(120%);
     transform: scale(1.01);
     border: 5px solid #0077ff;
 }
@@ -74,6 +94,7 @@ body{
     content: "";
     padding-top: 100%; 
     display: block;
+    filter: brightness(1.2) grayscale(100%) contrast(130%);
   }
 
 .s:first-child{background-image: url('img2.jpg');}
@@ -84,15 +105,15 @@ body{
 .s:nth-child(6){background-image: url('img5.jpg');}
 .s:nth-child(7){background-image: url('img4.jpg');}
 
-.s:nth-child(8){font-size: 1.5rem; color: #0693e3;font-weight: BOLD;border: 3px solid #0693e3;}
+.s:nth-child(8){font-size: 1.5rem; color: #0693e3;font-weight: BOLD;}
 .s:nth-child(8)::before{padding-top: 40%;}
 
 
 
 .s:hover .grid-item-link {
-    display: block; 
+    visibility: visible; 
     opacity: 1; 
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-50%);
   }
 
   @media screen and (max-width: 768px) {
